@@ -19,10 +19,17 @@ const awesomeCard = css`
   padding: 20px;
 `;
 
+const Card = styled.div`
+  background-color: white;
+`;
+
 const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: pink;
+  ${Card} {
+    background-color: blue;
+  }
 `;
 
 const Input = styled.input.attrs({
@@ -96,10 +103,6 @@ const rotation = keyframes`
   to {
     transform: rotate(360deg);
   }
-`;
-
-const Card = styled.div`
-  background-color: white;
 `;
 
 const FormButton = styled.button`
