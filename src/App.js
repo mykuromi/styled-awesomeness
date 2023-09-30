@@ -1,4 +1,10 @@
-import styled, { createGlobalStyle, css, keyframes } from "styled-components";
+import styled, {
+  createGlobalStyle,
+  css,
+  keyframes,
+  ThemeProvider,
+} from "styled-components";
+import theme from "./theme";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -31,19 +37,24 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>
-        <Button>Hello</Button>
-        <Button danger rotationTime={5}>
-          Hello
-        </Button>
-        <Anchor as={Button} href="http://google.com">
-          Go to google
-        </Anchor>
-        <Anchor2 href="http://google.com">Go to google</Anchor2>
-      </Container>
-      <Container>
-        <Input placeholder="hello" />
-      </Container>
+      <ThemeProvider theme={theme}>
+        <Container>
+          <Button>Hello</Button>
+          <Button danger rotationTime={5}>
+            Hello
+          </Button>
+          <Anchor as={Button} href="http://google.com">
+            Go to google
+          </Anchor>
+          <Anchor2 href="http://google.com">Go to google</Anchor2>
+        </Container>
+        <Container>
+          <Input placeholder="hello" />
+        </Container>
+        <Container>
+          <Form />
+        </Container>
+      </ThemeProvider>
     </>
   );
 }
@@ -86,5 +97,23 @@ const rotation = keyframes`
     transform: rotate(360deg);
   }
 `;
+
+const Card = styled.div`
+  background-color: white;
+`;
+
+const FormButton = styled.button`
+  border-radius: 30px;
+  padding: 25px 15px;
+  background-color: ${(props) => props.theme.successColor};
+`;
+
+const Form = () => {
+  return (
+    <Card>
+      <FormButton>Hello</FormButton>
+    </Card>
+  );
+};
 
 export default App;
